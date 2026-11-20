@@ -421,7 +421,7 @@ recovers by itself when the database returns).
 - **Used for:** discussing the architecture and trade-offs up front; scaffolding the monorepo;
   drafting the SQL schema, API layers, React components and tests; checking query plans with
   `EXPLAIN ANALYZE`; testing the running app in a browser (including the two-tab conflict);
-  and drafting this README. I reviewed each change before committing it, in small commits.
+  and drafting this README. I reviewed each change before accepting it.
 - **Suggestions I changed or rejected:**
   - The initial plan used **Drizzle ORM**. I switched to hand-written SQL with `pg`, because the
     key parts (partial unique index, trigram indexes, generated columns, keyset row comparisons)

@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: contacts-postgres
+    environment:
+      POSTGRES_USER: contacts
+      POSTGRES_PASSWORD: contacts
+      POSTGRES_DB: contacts
+    ports:
+      # Host port 5433 so it doesn't clash with a locally installed Postgres on 5432.
+      - '5433:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U contacts -d contacts']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:
